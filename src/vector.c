@@ -1,4 +1,3 @@
-#include <math.h>
 #include "vector.h"
 
 vector *zero(int size)
@@ -13,42 +12,84 @@ vector *zero(int size)
 
 //TODO: creation of a vector from an array of numbers
 
+/**
+ * @Brief Returnt the dimension (size) of v.
+ */
 int size(vector *v)
 {
     return v->n;
 }
 
+/**
+ * @brief Return the value of the i-th component
+ * of v.
+ */
 double get(vector *v, int i)
 {
     return v->values[i];
 }
 
+/**
+ * @brief Change the value of the i-th component
+ * of v.
+ */
 void set(vector *v, int i, double x)
 {
     v->values[i] = x;
 }
 
-int add_vector(vector *v, vector *u)
+/**
+ * @brief Sum of two vector of the same dimension,
+ * the new vector is stored in u, while v remains unchanged.
+ */
+int vector_add(vector *u, vector *v)
 {
-  int res;
+  int res = 0;
   
   if(size(v) == size(u)) {
       for(int i = 0; i < size(u); i++) {
-          double x = get(v,i);
-          set(v,i, x+get(u,i));
+          double x = get(u,i);
+          set(u,i, x+get(v,i));
       }
       res = 1;
-  } else {
-      res = -1;
   }
-
   return res;
 }
 
-/*
- * @param: u and v, both vector pointers
- * @returns: a double formatted scalar products if the vectors have
- * the same size, -1 otherwise
+/**
+ * @brief Difference of the vectors of the same dimension,
+ * the new vector if stored in u, while v remains unchanged.
+ */
+int vector_sub(vector *u, vector *v)
+{
+    int res = 0;
+
+    if(size(u) == size(v)) {
+        for (int i = 0; i < size(u); i++) {
+            double x = get(u,i);
+            set(u, i, x + get(v, i));
+        }
+        res = 1;
+    } 
+
+    return res;
+}
+
+/**
+ * @brief Multiplication of vector such as the result is
+ * a square matrix whose pointer in stored in m.
+ */
+int vector_mul(vector *u, vector *v, matrix *m)
+{
+    int res = 0;
+    
+    return res;
+}
+
+/**
+ * @brief The scalar product is the one whose
+ * norm is the euclidian norm. In other words,
+ * it is the operation \f$u^T v \f$.
  */
 double scalar(vector *u, vector *v)
 {
@@ -63,6 +104,10 @@ double scalar(vector *u, vector *v)
     return res;
 }
 
+/**
+ * @brief The euclidian norm is calculated with the
+ * formula \f$\left(\displaystyle\sum_{k=0}^{n-1} v_k^2\right)^{\frac{1}{2}}\f$
+ */
 double norm(vector *v)
 {
     double res = 0;
@@ -73,8 +118,9 @@ double norm(vector *v)
     return res;
 }
 
-/*
- * @param: a vector pointer v
+/**
+ * @brief Free the allocated memory of the array of values and 
+ * of the struct of the vector itself.
  */
 void destroy(vector *v)
 {

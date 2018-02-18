@@ -4,10 +4,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <math.h>
 
-typedef struct Matrix Matrix;
+typedef struct matrix matrix;
 
-struct Matrix
+struct matrix
 {
     int n;
     int m;
@@ -15,6 +16,6 @@ struct Matrix
 
 };
 
-Matrix *zeros(int, int);
+matrix *zeros(int, int);
 
 #endif
