@@ -1,7 +1,9 @@
 /**
  * @author Simon Petit
  *
- * @file matrix.c
+ * @file
+ *
+ * Implementation of functions related to the matrix structure.
  */
 #include "matrix.h"
 
@@ -78,7 +80,7 @@ void matrix_set(matrix *m, int i, int j, double x)
     set(get_row(m, i), j, x);
 }
 
-int matrix_add(matrix *m, matrix *n)
+int matrix_add(matrix *m, matrix *n, matrix *o)
 {
     int res = 0;
     
@@ -86,7 +88,7 @@ int matrix_add(matrix *m, matrix *n)
             && get_number_of_rows(m) == get_number_of_rows(m)) {
         for (int i = 0; i < get_number_of_rows(m); i++) {
             for (int j = 0; j < get_number_of_columns(m); j++) {
-                matrix_set(m, i, j, matrix_get(m, i, j) + matrix_get(n, i, j));
+                matrix_set(o, i, j, matrix_get(m, i, j) + matrix_get(n, i, j));
             }
         }
         res = 1;
@@ -94,7 +96,7 @@ int matrix_add(matrix *m, matrix *n)
     return res;
 }
 
-int matrix_sub(matrix *m, matrix *n)
+int matrix_sub(matrix *m, matrix *n, matrix *o)
 {    
     int res = 0;
     
@@ -102,7 +104,7 @@ int matrix_sub(matrix *m, matrix *n)
             && get_number_of_rows(m) == get_number_of_rows(m)) {
         for (int i = 0; i < get_number_of_rows(m); i++) {
             for (int j = 0; j < get_number_of_columns(m); j++) {
-                matrix_set(m, i, j, matrix_get(m, i, j) - matrix_get(n, i, j));
+                matrix_set(o, i, j, matrix_get(m, i, j) - matrix_get(n, i, j));
             }
         }
         res = 1;
@@ -111,9 +113,31 @@ int matrix_sub(matrix *m, matrix *n)
 
 }
 
+int matrix_mul(matrix *m, matrix *n, matrix *o)
+{
+    int res = 0;
+    double c = 0;
+
+    if (get_number_of_rows(n) == get_number_of_columns(m)) {
+        for (int i = 0; i < get_number_of_columns(m); i++) {
+            for (int j = 0; j < get_number_of_rows(n); j++) {
+                c = 0;
+                for (int k = 0; k < get_number_of_rows(n); k++) {
+                    c += matrix_get(m, i, k) * matrix_get(n, k, j);
+                }
+                matrix_set(o, i, j, c);
+            }
+        }
+    }
+
+    return res;
+}
+
 double determinant(matrix *m)
 {
     double res = 0;
+
+
 
     return res;
 }

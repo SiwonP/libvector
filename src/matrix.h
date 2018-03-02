@@ -1,7 +1,7 @@
 /**
  * @author Simon Petit
  *
- * @file matrix.h
+ * @file 
  */
 
 #ifndef MATRIX_H
@@ -14,11 +14,21 @@
 
 #include "vector.h"
 
+/**
+ * @typedef vector
+ * @brief vector structure.
+ */
 typedef struct vector vector;
+
+/**
+ * @typedef matrix
+ * @brief vector structure.
+ */
 typedef struct matrix matrix;
 
 /**
  * @struct matrix
+ *
  * @brief Real-valued Matrix math object.
  */
 struct matrix
@@ -37,6 +47,7 @@ struct matrix
  *
  * @param[in] size_n Number of rows.
  * @param[in] size_m Number of columns.
+ *
  * @return A matrix pointer.
  *
  * @relates matrix
@@ -95,7 +106,7 @@ vector *get_row(matrix *m, int i);
  *
  * @relates matrix
  */
-vector *get_columns(matrix *m, int j);
+vector *get_column(matrix *m, int j);
 
 /**
  * @brief Get the element [i,j] of the matrix.
@@ -125,28 +136,44 @@ void matrix_set(matrix *m, int i, int j, double x);
 /**
  * @brief Add two matrices.
  *
- * @param[in, out] m A matrix pointer.
+ * @param[in] m A matrix pointer.
  * @param[in] n A matrix pointer.
+ * @param[out] o A matrix pointer.
  *
  * @returns 0 if the addition can't be made because of dimension 
- * incompatibilyt, 1 otherwise.
+ * incompatibility, 1 otherwise.
  *
  * @relates matrix
  */
-int matrix_add(matrix *m, matrix *n);
+int matrix_add(matrix *m, matrix *n, matrix *o);
 
 /**
  * @brief Subtract two matrices.
  *
- * @param[in, out] m A matrix pointer.
+ * @param[in] m A matrix pointer.
  * @param[in] n A matrix pointer.
+ * @param[out] o A matrix pointer.
  *
  * @returns 0 if the subtraction can't be made because of dimension 
  * incompatibilyt, 1 otherwise.
  *
  * @relates matrix
  */
-int matrix_sub(matrix *m, matrix *n);
+int matrix_sub(matrix *m, matrix *n, matrix *o);
+
+/**
+ * @brief Multiplication of two matrices.
+ *
+ * @param[in] m A matrix pointer.
+ * @param[in] n A matrix pointer.
+ * @param[out] o A matrix pointer.
+ *
+ * @return 0 if the multiplication can't be mage because of dimension
+ * incompatibility, 1 otherwise.
+ *
+ * @relates matrix
+ */
+int matrix_mul(matrix *m, matrix *n, matrix *o);
 
 /**
  * @brief Compute the determinant.

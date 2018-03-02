@@ -17,11 +17,23 @@
 
 #include "matrix.h"
 
+/**
+ * @typedef matrix
+ *
+ * @brief matrix structure.
+ */
 typedef struct matrix matrix;
+
+/**
+ * @typedef vector
+ *
+ * @brief vector structure.
+ */
 typedef struct vector vector;
 
 /**
  * @struct vector
+ *
  * @brief Real-valued Vector math object.
  */
 struct vector
@@ -33,7 +45,10 @@ struct vector
 };
 
 /**
+ * @brief Create a null vector.
+ *
  * @param[in] size The dimension of the vector.
+ *
  * @return Vector pointer of length size.
  *
  * @relates vector
@@ -55,6 +70,7 @@ int size(vector *v);
  *
  * @param[in] v A vector pointer.
  * @param[in] i The index of the component to retrieve.
+ *
  * @return i-th component.
  *
  * @relates vector
@@ -78,8 +94,9 @@ void set(vector *v, int i, double x);
  *
  * @param[in] u A vector pointer.
  * @param[in] v A vector pointer.
- * @return 1 if both vectors have the same dimension,
- * 0 otherwise (the operation is not defined).
+ *
+ * @return 0 if the addition can't be made because of dimension
+ * incompatibility, 1 otherwise.
  *
  * @relates vector
  */
@@ -91,6 +108,7 @@ int vector_add(vector *u, vector *v);
  *
  * @param[in] u A vector pointer.
  * @param[in] v A vector pointer.
+ *
  * @return 1 if both vectors have the same dimension,
  * 0 otherwise (the operation is not defined).
  *
@@ -105,6 +123,7 @@ int vector_sub(vector *u, vector *v);
  * @param[in] u A vector pointer.
  * @param[in] v A vector pointer.
  * @param[out] m A matrix pointer to store the result of the product.
+ *
  * @return 1 if both vectors have the same dimension,
  * 0 otherwise (the operation is not defined).
  *
@@ -120,6 +139,7 @@ int vector_mul(vector *u, vector *v, matrix *m);
  *
  * @param[in] u A vector pointer.
  * @param[in] v A vector pointer.
+ *
  * @return The scalar product of them or -1 if
  * they are not of the same length.
  *
@@ -132,6 +152,7 @@ double scalar(vector *u, vector *v);
  * formula \f$\left(\displaystyle\sum_{k=0}^{n-1} v_k^2\right)^{\frac{1}{2}}\f$
  *
  * @param[in] v A vector pointer.
+ *
  * @return the euclidian norm
  *
  * @relates vector

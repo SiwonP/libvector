@@ -1,7 +1,7 @@
 /**
  * @author Simon Petit
  *
- * @file vector.c
+ * @file 
  * Implementation of functions related to the vector structure.
  */
 #include "vector.h"
@@ -62,6 +62,7 @@ int vector_sub(vector *u, vector *v)
     return res;
 }
 
+//TODO
 int vector_mul(vector *u, vector *v, matrix *m)
 {
     int res = 0;

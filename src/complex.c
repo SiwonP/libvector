@@ -1,14 +1,10 @@
 /**
  * @author Simon Petit
  *
- * @file complex.c
+ * @file 
  */
 #include "complex.h"
 
-/**
- * @brief Creates and returns the cartesiand form of a complex number
- * from a couple of real numbers.
- */
 complex_num *cartesian(double a, double b)
 {
     complex_num *z = malloc(2*sizeof(double));
@@ -18,10 +14,6 @@ complex_num *cartesian(double a, double b)
     return z;
 }
 
-/**
- * @brief Creates and returns the cartesian form of
- * a complex number from its modulus and its argument.
- */
 complex_num *polar(double r, double theta)
 {
     complex_num *z = malloc(2*sizeof(double));
@@ -31,10 +23,6 @@ complex_num *polar(double r, double theta)
     return z;
 }
 
-/**
- * @brief Creates and returns the cartesian form of
- * a complex number from a two elements long array.
- */
 complex_num *cartesian_from_array(double a[2])
 {
     complex_num *z = malloc(2*sizeof(double));
@@ -44,11 +32,6 @@ complex_num *cartesian_from_array(double a[2])
     return z;
 }
 
-/**
- * @brief Creates and returns the cartesian form of
- * a complex number from a two elements long array
- * containing its modulus and its argument.
- */
 complex_num *polar_from_array(double r[2])
 {
     complex_num *z = malloc(2*sizeof(double));
@@ -58,10 +41,6 @@ complex_num *polar_from_array(double r[2])
     return z;
 }
 
-/**
- * @brief Creates and returns a complex number
- * from a two dimension vector.
- */
 complex_num *cartesian_from_vector(vector *v)
 {
     complex_num *z;
@@ -71,33 +50,21 @@ complex_num *cartesian_from_vector(vector *v)
     return z;
 }
 
-/**
- * @brief Returns the real part of the complex.
- */
 double real_part(complex_num *z)
 {
     return z->x;
 }
 
-/**
- * @brief Returns the imaginary part of the complex.
- */
 double im_part(complex_num *z)
 {
     return z->y;
 }
 
-/**
- * @brief Displays the cartesian form of the complex number.
- */
 void print_complex(complex_num *z)
 {
     printf("%lf + i %lf", real_part(z), im_part(z));
 }
 
-/**
- * @brief Sum of two complex numbers.
- */
 complex_num *complex_add(complex_num *u, complex_num *v)
 {
     complex_num *z = cartesian(real_part(u) + real_part(v),
@@ -106,9 +73,6 @@ complex_num *complex_add(complex_num *u, complex_num *v)
     return z;
 }
 
-/**
- * @brief Difference of two complex numbers.
- */
 complex_num *complex_sub(complex_num *u, complex_num *v)
 {
     complex_num *z = cartesian(real_part(u) - real_part(v),
@@ -117,27 +81,76 @@ complex_num *complex_sub(complex_num *u, complex_num *v)
     return z;
 }
 
-/**
- * @brief Computes and returns the conjugate.
- */
+complex_num *complex_mul(complex_num *u, complex_num *v)
+{
+    double r = real_part(u)*real_part(v) - im_part(u)*im_part(v);
+    double i = real_part(u)*im_part(v) + real_part(v)*im_part(u);
+    complex_num *z = cartesian(r,i);
+
+    return z;
+}
+
+//TODO: complex_div
+
+complex_num *complex_add_real(complex_num *u, double x)
+{
+    double r = real_part(u) + x;
+    double i = im_part(u);
+
+    complex_num *z = cartesian(r,i);
+
+    return z;
+}
+
+complex_num *complex_sub_real(complex_num *u, double x)
+{
+    double r = real_part(u) - x;
+    double i = im_part(u);
+
+    complex_num *z = cartesian(r,i);
+
+    return z;
+}
+
+complex_num *complex_mul_real(complex_num *u, double x)
+{
+    double r = real_part(u) * x;
+    double i = im_part(u) * x;
+
+    complex_num *z = cartesian(r, i);
+
+    return z;
+}
+
+complex_num *complex_div_real(complex_num *u, double x)
+{
+    double r = real_part(u) / x;
+    double i = im_part(u) / x;
+
+    complex_num *z = cartesian(r, i);
+
+    return z;
+}
+
 complex_num *conjugate(complex_num *z)
 {
     complex_num *z1 = cartesian(real_part(z), -im_part(z));
     return z1;
 }
 
-/**
- * @brief Compute the modulus of the complex
- * as \f$\sqrt(x^2 + y^2)\f$.
- */
+complex_num *complex_neg(complex_num *z)
+{
+    complex_num *z1 = cartesian(-real_part(z), -im_part(z));
+    return z1;
+}
+
+//TODO: complex_num *complex_sqrt(complex_num *z)
+
 double modulus(complex_num *z)
 {
     return sqrt(real_part(z)*real_part(z) + im_part(z)*im_part(z));
 }
 
-/**
- * @brief Frees the memory.
- */
 void complex_destroy(complex_num *z)
 {
     free(z);
