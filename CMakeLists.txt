@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(math_lib)
+project(libeng)
 
 enable_testing()
 
