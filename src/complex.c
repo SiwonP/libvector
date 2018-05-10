@@ -151,7 +151,7 @@ double modulus(complex_num *z)
     return sqrt(real_part(z)*real_part(z) + im_part(z)*im_part(z));
 }
 
-void complex_destroy(complex_num *z)
+void complex_free(complex_num *z)
 {
     free(z);
 }

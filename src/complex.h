@@ -5,6 +5,7 @@
  * Implementation of complex numbers.
  * This will follow the classic mathematical definition of complex numbers
  * as well as the classi functions involving complex numbers.
+ *
  */
 
 #ifndef COMPLEX_H
@@ -243,6 +244,6 @@ double modulus(complex_num *z);
  *
  * @relates complex_num
  */
-void complex_destroy(complex_num *z);
+void complex_free(complex_num *z);
 
 #endif
