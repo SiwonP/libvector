@@ -18,13 +18,6 @@
 #include "matrix.h"
 
 /**
- * @typedef matrix
- *
- * @brief matrix structure.
- */
-typedef struct matrix matrix;
-
-/**
  * @typedef vector
  *
  * @brief vector structure.

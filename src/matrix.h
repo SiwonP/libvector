@@ -15,12 +15,6 @@
 #include "vector.h"
 
 /**
- * @typedef vector
- * @brief vector structure.
- */
-typedef struct vector vector;
-
-/**
  * @typedef matrix
  * @brief vector structure.
  */

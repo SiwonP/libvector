@@ -49,19 +49,25 @@ int get_number_of_columns(matrix *m)
 
 vector *get_row(matrix *m, int i)
 {
-    //TODO: Make sure i is < get_number_of_rows(m)
-    return m->values[i];
+    vector *row = NULL;
+    if (i < get_number_of_rows(m)) {
+        row = m->values[i];
+    }
+    return row;
 }
 
 vector *get_column(matrix *m, int j)
 {
-    //TODO: Make sure j is <= get_number_of_columns
-    vector *v = vector_zeros(get_number_of_rows(m));
-    
-    for (int i = 0; i < get_number_of_rows(m); i++) {
-        set(v,i,get(get_row(m,i),j));       
+    vector *col = NULL;
+
+    if (j < get_number_of_columns(m)) {
+        col = vector_zeros(get_number_of_rows(m));
+
+        for (int i = 0; i < get_number_of_rows(m); i++) {
+            set(col,i,get(get_row(m,i),j));       
+        }
     }
-    return v;
+    return col;
 }
 
 double matrix_get(matrix *m, int i, int j)
@@ -83,7 +89,7 @@ void matrix_set(matrix *m, int i, int j, double x)
 int matrix_add(matrix *m, matrix *n, matrix *o)
 {
     int res = 0;
-    
+
     if (get_number_of_columns(m) == get_number_of_columns(n)
             && get_number_of_rows(m) == get_number_of_rows(m)) {
         for (int i = 0; i < get_number_of_rows(m); i++) {
@@ -99,7 +105,7 @@ int matrix_add(matrix *m, matrix *n, matrix *o)
 int matrix_sub(matrix *m, matrix *n, matrix *o)
 {    
     int res = 0;
-    
+
     if (get_number_of_columns(m) == get_number_of_columns(n)
             && get_number_of_rows(m) == get_number_of_rows(m)) {
         for (int i = 0; i < get_number_of_rows(m); i++) {
