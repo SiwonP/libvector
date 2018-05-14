@@ -181,6 +181,15 @@ int matrix_mul(matrix *m, matrix *n, matrix *o);
 double determinant(matrix *m);
 
 /**
+ * @brief Determine if a matrix is diagonal.
+ *
+ * @param[in] m A matrix pointer.
+ *
+ * @return 1 if diagonal, 0 otherwise.
+ */
+int is_diagonal(matrix *m);
+
+/**
  * @brief Destroy the matrix object and free the memory
  *
  * @param[in] m Matrix pointer.

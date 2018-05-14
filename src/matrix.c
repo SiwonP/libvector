@@ -142,11 +142,28 @@ int matrix_mul(matrix *m, matrix *n, matrix *o)
 double determinant(matrix *m)
 {
     double res = 0;
-
+//TODO: formula of the determinant
 
 
     return res;
 }
+
+int is_diagonal(matrix *m)
+{
+    int r = 1;
+    int l = get_number_of_columns(m);
+    int n = get_number_of_rows(m);
+
+    for (int i = 0; i < l; i++) {
+        for (int j = 0; j < n; j++) {
+            if (i != j) {
+                r = r && (matrix_get(m, i, j) == 0);
+            }
+        }
+    }
+    return r;
+}
+
 
 void matrix_destroy(matrix *m)
 {       
