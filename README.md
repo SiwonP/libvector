@@ -42,4 +42,31 @@ Please find more information about
 #### Build from source prerequisites
 
 If you happen to want to build this library from the source, you will need `GNU
-make 3.81` and `cmake version >= 3.6`.
+make 3.81` and `cmake version >= 3.6` as well as a C compiler such as `gcc` or
+`clang`.
+
+### Installing
+
+#### Packages
+
+There are no packages available yet for the library.
+
+#### Binary
+
+There are no binaries available yet of the library.
+
+#### Build from source
+
+To build the library from source, please follow the following instructions (on a
+UNIX Machine) 
+
+```
+git clone https://github.com/SiwonP/libmatheng.git . 
+cd libmatheng
+mkdir build
+cd build
+cmake ..
+make
+```
+
+NB : this library was only tested on macOS so far.
