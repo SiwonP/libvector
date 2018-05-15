@@ -14,7 +14,8 @@ Test(vector, creation)
 
     vector *u = vector_zeros(5);
     cr_assert(size(u) == 5);
-    for (int i = 0; i < size(u); i++) {
+    int i;
+    for (i = 0; i < size(u); i++) {
         cr_assert(get(u, i) == 0);
     }
     destroy(u);
@@ -172,8 +173,9 @@ Test(matrix, get_number_of_columns)
 Test(matrix, matrix_identity)
 {
     matrix *m = matrix_identity(4);
-    for (int i = 0; i < get_number_of_rows(m); i++) {
-        for (int j = 0; j < get_number_of_columns(m); j++) {
+    int i, j;
+    for (i = 0; i < get_number_of_rows(m); i++) {
+        for (j = 0; j < get_number_of_columns(m); j++) {
             if( i == j) {
                cr_assert(matrix_get(m, i, j) == 1);
             } else {
