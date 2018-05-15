@@ -36,9 +36,10 @@ void set(vector *v, int i, double x)
 int vector_add(vector *u, vector *v)
 {
   int res = 0;
+  int i;
   
   if(size(v) == size(u)) {
-      for(int i = 0; i < size(u); i++) {
+      for(i = 0; i < size(u); i++) {
           double x = get(u,i);
           set(u,i, x+get(v,i));
       }
@@ -50,9 +51,10 @@ int vector_add(vector *u, vector *v)
 int vector_sub(vector *u, vector *v)
 {
     int res = 0;
+    int i;
 
     if(size(u) == size(v)) {
-        for (int i = 0; i < size(u); i++) {
+        for (i = 0; i < size(u); i++) {
             double x = get(u,i);
             set(u, i, x + get(v, i));
         }
@@ -73,8 +75,10 @@ int vector_mul(vector *u, vector *v, matrix *m)
 double scalar(vector *u, vector *v)
 {
     double res = 0;
+    int i;
+
     if (u->n == v->n) {
-        for (int i = 0; i < u->n; i++) {
+        for (i = 0; i < u->n; i++) {
             res += u->values[i] * v->values[i];
         }
     } else {
