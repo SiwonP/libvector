@@ -2,7 +2,10 @@ language: c
 
 os: 
     - osx
-    - linux
+
+before_install:
+    - brew update
+    - brew install snaipe/soft/criterion
 
 script:
     - mkdir build
