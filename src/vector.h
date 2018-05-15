@@ -16,26 +16,7 @@
 #include <math.h>
 
 #include "matrix.h"
-
-/**
- * @typedef vector
- *
- * @brief vector structure.
- */
-typedef struct vector vector;
-
-/**
- * @struct vector
- *
- * @brief Real-valued Vector math object.
- */
-struct vector
-{
-    /** Length of the vector.*/
-    int n;
-    /** Element of the vector.*/
-    double *values;
-};
+#include "types.h"
 
 /**
  * @brief Create a null vector.

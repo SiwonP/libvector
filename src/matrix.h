@@ -14,28 +14,7 @@
 
 #include "vector.h"
 
-/**
- * @typedef matrix
- * @brief vector structure.
- */
-typedef struct matrix matrix;
-
-/**
- * @struct matrix
- *
- * @brief Real-valued Matrix math object.
- */
-struct matrix
-{
-    /** Number of rows.*/
-    int n;
-    /** Number of columns.*/
-    int m; 
-    /** Elements of the matrix.*/
-    struct vector **values; 
-
-};
-
+#include "types.h"
 /**
  * @brief Create a null matrix.
  *
