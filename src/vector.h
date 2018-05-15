@@ -141,6 +141,6 @@ double norm(vector *v);
  *
  * @relates vector
  */
-void destroy(vector *v);
+void vector_free(vector *v);
 
 #endif

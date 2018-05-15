@@ -97,7 +97,7 @@ double norm(vector *v)
     return res;
 }
 
-void destroy(vector *v)
+void vector_free(vector *v)
 {
     free(v->values);
     free(v);
