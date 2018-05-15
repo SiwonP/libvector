@@ -17,7 +17,8 @@ If `criterion` is not installed on your machine, you can installed package with
 the follwing instruction according to the OS : 
 - macOS : `brew install snaipe/soft/criterion`
 - AUR : `pacaur -S criterion`
-- Debian/Ubuntu : ```
+- Debian/Ubuntu : 
+```
 sudo add-apt-repository ppa:snaipewastaken/ppa
 sudo apt-get update
 sudo apt-get install criterion-dev
