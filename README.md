@@ -26,17 +26,17 @@ sudo apt-get install criterion-dev
 
 ##### Binary
 
-Binaries are available [here]{https://github.com/Snaipe/Criterion/releases}.
+Binaries are available [here](https://github.com/Snaipe/Criterion/releases).
 
 ##### Build from source
 
 You can still build the criterion library from source as well following thoses
-[instructions]{http://criterion.readthedocs.io/en/latest/setup.html#installation}.
+[instructions](http://criterion.readthedocs.io/en/latest/setup.html#installation).
 
 ##### More
 
 Please find more information about
-[criterion]{https://github.com/Snaipe/Criterion} on their official github.
+[criterion](https://github.com/Snaipe/Criterion) on their official github.
 
 
 #### Build from source prerequisites
