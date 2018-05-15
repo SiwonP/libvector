@@ -1,4 +1,4 @@
-# libmatheng
+# libmatheng ![build status](https://api.travis-ci.org/SiwonP/libmatheng.svg?branch=master)
 
 This library implements mathematical tools useful, at first, for engineering. 
 
@@ -45,17 +45,17 @@ If you happen to want to build this library from the source, you will need `GNU
 make 3.81` and `cmake version >= 3.6` as well as a C compiler such as `gcc` or
 `clang`.
 
-### Installing
+## Installing
 
-#### Packages
+### Packages
 
 There are no packages available yet for the library.
 
-#### Binary
+### Binary
 
 There are no binaries available yet of the library.
 
-#### Build from source
+### Build from source
 
 To build the library from source, please follow the following instructions (on a
 UNIX Machine) 
@@ -79,3 +79,12 @@ make test
 ```
 
 to run the unit tests.
+
+## Authors
+
+- Simon Petit -- initial contributer and only author so far
+
+## License 
+
+This library is under the GNU Lesser General Public License, see
+[LICENSE](https://github.com/SiwonP/libmatheng/blob/master/LICENSE) for details.
