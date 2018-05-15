@@ -69,7 +69,7 @@ cmake ..
 make
 ```
 
-NB : this library was only tested on macOS so far.
+NB : this library was only built on macOS and Ubuntu so far.
 
 ## Running the tests
 
