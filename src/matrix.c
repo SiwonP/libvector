@@ -147,11 +147,23 @@ int matrix_mul(matrix *m, matrix *n, matrix *o)
 
 double determinant(matrix *m)
 {
-    double res = 0;
-//TODO: formula of the determinant
+    double det = 0;
+    //TODO: formula of the determinant with QR decomposition
 
 
-    return res;
+    return det;
+}
+
+double trace(matrix *m)
+{
+    double tr = 0;
+    int i, j;
+
+    for (i = 0; i < get_number_of_rows(m); i++) {
+        tr += matrix_get(m, i, i);
+    }
+
+    return tr;
 }
 
 int is_diagonal(matrix *m)
@@ -172,12 +184,12 @@ int is_diagonal(matrix *m)
 }
 
 
-void matrix_destroy(matrix *m)
+void matrix_free(matrix *m)
 {       
     int i;
 
     for (i = 0; i < get_number_of_rows(m); i++) {
-        destroy(get_row(m, i));
+        vector_free(get_row(m, i));
     }
     free(m);
 }

@@ -160,6 +160,17 @@ int matrix_mul(matrix *m, matrix *n, matrix *o);
 double determinant(matrix *m);
 
 /**
+ * @brief Compute the trace, ie the sum of the diagonal elements
+ * 
+ * @param[in] m A matrix pointer.
+ *
+ * @return The trace.
+ *
+ * @relates matrix
+ */
+double trace(matrix *m);
+
+/**
  * @brief Determine if a matrix is diagonal.
  *
  * @param[in] m A matrix pointer.
@@ -175,6 +186,6 @@ int is_diagonal(matrix *m);
  * 
  * @relates matrix
  */
-void matrix_destroy(matrix *m);
+void matrix_free(matrix *m);
 
 #endif
