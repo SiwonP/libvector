@@ -70,3 +70,12 @@ make
 ```
 
 NB : this library was only tested on macOS so far.
+
+## Running the tests
+
+If this library was built from source, go to your `build` directory and 
+```
+make test
+```
+
+to run the unit tests.
