@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.6)
 project(libmatheng VERSION 1.0.0)
 
 enable_testing()
+enable_language(C)
 
 find_library(NAMES criterion)
 

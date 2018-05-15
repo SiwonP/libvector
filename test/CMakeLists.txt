@@ -10,3 +10,4 @@ add_executable(unittest
 add_test(NAME UnitTest COMMAND unittest)
 
 target_link_libraries(unittest criterion)
+target_link_libraries(unittest m)
