@@ -1,34 +1,24 @@
 # libmatheng ![build status](https://api.travis-ci.org/SiwonP/libmatheng.svg?branch=master)
 
-- [libmatheng ![build
-status](https://api.travis-ci.org/SiwonP/libmatheng.svg?branch=master)](#libmatheng---build-status--https---apitravis-ciorg-siwonp-libmathengsvg-branch-master-)
-    * [Getting Started](#getting-started)
-    + [Prerequisites](#prerequisites)
-    - [Test suite prerequisites](#test-suite-prerequisites)
-    * [Packages](#packages)
-    * [Binary](#binary)
-    * [Build from source](#build-from-source)
-* [More](#more)
-    - [Documentation
-prerequisites](#documentation-prerequisites)
-    - [Build from source
-prerequisites](#build-from-source-prerequisites)
-    * [Installin  *
-    [License](#license)
-    g](#installing)
-    + [Packages](#packages-1)
-+ [Binary](#binary-1)
-    + [Build
-    from
-source](#build-from-source-1)
-    * [Running
-    the
-tests](#running-the-tests)
-    * [Building
-    the
-    documentation](#building-the-documentation)
-* [Authors](#authors)
-    This library implements mathematical tools useful, at first, for engineering. 
+This library implements mathematical tools useful, at first, for engineering. 
+
+- [Getting Started](#getting-started)
+    * [Prerequisites](#prerequisites)
+        + [Test suite prerequisites](#test-suite-prerequisites)
+            - [Packages](#packages)
+            - [Binary](#binary)
+            - [Build from source](#build-from-source)
+            - [More](#more)
+        + [Documentation prerequisites](#documentation-prerequisites)
+        + [Build from source prerequisites](#build-from-source-prerequisites)
+- [Installing](#installing)
+    * [Packages](#packages-1)
+    * [Binary](#binary-1)
+    * [Build from source](#build-from-source-1)
+- [Running the tests](#running-the-tests)
+- [Building the documentation](#building-the-documentation)
+- [Authors](#authors)
+- [License](#license)
 
 ## Getting Started
 
