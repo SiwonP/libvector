@@ -38,6 +38,11 @@ You can still build the criterion library from source as well following thoses
 Please find more information about
 [criterion](https://github.com/Snaipe/Criterion) on their official github.
 
+#### Documentation prerequisites
+
+The documentation is made thanks to `doxygen`, so you must have it installed on
+your machine.
+
 
 #### Build from source prerequisites
 
@@ -79,6 +84,17 @@ make test
 ```
 
 to run the unit tests.
+
+## Building the documentation
+
+To build the documentation run at the root directory of the source
+
+```
+doxygen
+```
+
+It creates a `doc` folder in which there is the `html` version and the `latex`
+version. To make the latex version run `make` in the `latex` folder.
 
 ## Authors
 
