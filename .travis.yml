@@ -4,8 +4,9 @@ os:
     - osx
     - linux
 
+sudo: required 
+
 before_install:
-    - if [ ${TRAVIS_OS_NAME} = "osx" ] ; then brew update; fi
     - if [ ${TRAVIS_OS_NAME} = "osx" ] ; then brew install snaipe/soft/criterion; fi
     - if [ ${TRAVIS_OS_NAME} = "linux" ] ; then add-apt-repository ppa:snaipewastaken/ppa; fi
     - if [ ${TRAVIS_OS_NAME} = "linux" ] ; then apt-get update; fi
