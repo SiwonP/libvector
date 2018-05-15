@@ -4,7 +4,7 @@ os:
     - osx
 
 before_install:
-    - brew update
+    - if [ ${TRAVIS_OS_NAME} = "osx" ] ; then brew update; fi
     - brew install snaipe/soft/criterion
 
 script:
