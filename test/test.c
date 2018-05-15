@@ -93,7 +93,7 @@ Test(complex_num, cartesian)
     cr_assert(real_part(z) == 1);
     cr_assert(im_part(z) == 1);
 
-    complex_destroy(z);
+    complex_free(z);
 }
 
 Test(complex_num, polar)
@@ -102,7 +102,7 @@ Test(complex_num, polar)
     cr_assert(real_part(z) == cos(2));
     cr_assert(im_part(z) == sin(2));
 
-    complex_destroy(z);
+    complex_free(z);
 }
 
 Test(complex_num, complex_add)
@@ -115,9 +115,9 @@ Test(complex_num, complex_add)
     cr_assert(real_part(z) == 9);
     cr_assert(im_part(z) == 1);
 
-    complex_destroy(z);
-    complex_destroy(u);
-    complex_destroy(v);
+    complex_free(z);
+    complex_free(u);
+    complex_free(v);
 }
 
 Test(complex_num, complex_sub)
@@ -130,9 +130,9 @@ Test(complex_num, complex_sub)
     cr_assert(real_part(z) == -3);
     cr_assert(im_part(z) == 9);
 
-    complex_destroy(z);
-    complex_destroy(u);
-    complex_destroy(v);
+    complex_free(z);
+    complex_free(u);
+    complex_free(v);
 
 }
 
