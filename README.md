@@ -120,5 +120,5 @@ version. To make the latex version run `make` in the `latex` folder.
 
 ## License 
 
-This library is under the GNU Lesser General Public License, see
+This library is under the GNU General Public License, see
 [LICENSE](https://github.com/SiwonP/libmatheng/blob/master/LICENSE) for details.
