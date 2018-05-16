@@ -43,7 +43,7 @@ complex_num *polar_from_array(double r[2])
 
 complex_num *cartesian_from_vector(vector *v)
 {
-    complex_num *z;
+    complex_num *z = NULL;
     if(size(v) == 2) {
         z = cartesian(get(v,0), get(v,1));
     }
@@ -144,11 +144,36 @@ complex_num *complex_neg(complex_num *z)
     return z1;
 }
 
-//TODO: complex_num *complex_sqrt(complex_num *z)
+complex_num *complex_sqrt(complex_num *z)
+{
+    complex_num *w;
 
-double modulus(complex_num *z)
+    double a = real_part(z);
+    double b = im_part(z);
+
+    double x = sqrt((sqrt(a*a+b*b) + a)/2);
+    double y = sqrt((sqrt(a*a+b*b) - a)/2);
+
+    if (b < 0) {
+        y = -y;
+    }
+
+    w = cartesian(x, y);
+
+    return w;
+}
+
+double complex_modulus(complex_num *z)
 {
     return sqrt(real_part(z)*real_part(z) + im_part(z)*im_part(z));
+}
+
+double complex_argument(complex_num *z)
+{
+    double arg = 0;
+    //TODO: formulea of the argument between -pi and pi
+
+    return arg;
 }
 
 void complex_free(complex_num *z)

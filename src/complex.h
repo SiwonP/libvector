@@ -218,7 +218,18 @@ complex_num *complex_neg(complex_num *z);
  *
  * @relates complex_num
  */
-double modulus(complex_num *z);
+double complex_modulus(complex_num *z);
+
+/**
+ * @brief Compute the argument of the complex.
+ *
+ * @param[in] z A complex_num pointer.
+ *
+ * @return Its argument
+ *
+ * @relates complex_num
+ */
+double complex_argument(complex_num *z);
 
 /**
  * @brief Frees the memory.
