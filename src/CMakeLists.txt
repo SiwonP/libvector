@@ -1,8 +1,6 @@
 add_library(
-    matheng SHARED
-    complex.c
-    matrix.c
+    vector SHARED
     vector.c
     )
 
-set_target_properties(matheng PROPERTIES VERSION ${PROJECT_VERSION})
+set_target_properties(vector PROPERTIES VERSION ${PROJECT_VERSION})

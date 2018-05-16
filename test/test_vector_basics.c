@@ -1,7 +1,5 @@
 #include <criterion/criterion.h>
-#include "../src/matrix.h"
 #include "../src/vector.h"
-#include "../src/complex.h"
 
 TestSuite(vector);
 

@@ -14,9 +14,29 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <math.h>
+#include <complex.h>
 
-#include "matrix.h"
-#include "types.h"
+
+/**
+ * @typedef vector
+ *
+ * @brief vector structure.
+ */
+typedef struct vector vector;
+
+/**
+ * @struct vector
+ *
+ * @brief Real-valued Vector math object.
+ */
+struct vector
+{
+    /** Length of the vector.*/
+    int n;
+    /** Element of the vector.*/
+    double *values;
+};
+
 
 /**
  * @brief Create a null vector.
@@ -89,22 +109,6 @@ int vector_add(vector *u, vector *v);
  * @related vector
  */
 int vector_sub(vector *u, vector *v);
-
-/**
- * @brief Multiplication of vector such as the result is
- * a square matrix whose pointer in stored in m.
- *
- * @param[in] u A vector pointer.
- * @param[in] v A vector pointer.
- * @param[out] m A matrix pointer to store the result of the product.
- *
- * @return 1 if both vectors have the same dimension,
- * 0 otherwise (the operation is not defined).
- *
- * @relates vector
- * @related matrix
- */
-int vector_mul(vector *u, vector *v, matrix *m);
 
 /**
  * @brief The scalar product is the one whose

@@ -64,14 +64,6 @@ int vector_sub(vector *u, vector *v)
     return res;
 }
 
-//TODO
-int vector_mul(vector *u, vector *v, matrix *m)
-{
-    int res = 0;
-    
-    return res;
-}
-
 double scalar(vector *u, vector *v)
 {
     double res = 0;
