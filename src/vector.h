@@ -137,17 +137,26 @@ int vector_sub(vector *u, vector *v);
 double scalar(vector *u, vector *v);
 
 /**
- * @brief The euclidian norm is calculated with the
- * formula \f$\left(\displaystyle\sum_{k=0}^{n-1} v_k^2\right)^{\frac{1}{2}}\f$
+ * @brief 
  *
  * @param[in] v A vector pointer.
+ * @param[in] name The name of the norm, "1", "2" ... "p", "euclidian" or
+ * "infinity". 
  *
- * @return the euclidian norm
+ * @return The named norm.
  *
  * @relates vector
  */
 double vector_norm_base(vector *v, char *name);
 
+/**
+ * @brief Computer the norm from the structure given.
+ *
+ * @param[in] in A vector_norm_args object
+ *
+ * @return The norm in.name of in.x. If n.name not specified, the euclidian norm
+ * is chosen by default.
+ */
 double var_vector_norm(vector_norm_args in);
 
 /**
