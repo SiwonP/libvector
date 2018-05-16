@@ -61,6 +61,9 @@ Please find more information about
 The documentation is made thanks to `doxygen`, so you must have it installed on
 your machine.
 
+See [here](http://www.stack.nl/~dimitri/doxygen/download.html) to install
+`doxygen`.
+
 
 #### Build from source prerequisites
 
