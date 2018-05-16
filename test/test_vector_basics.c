@@ -1,39 +1,39 @@
 #include <criterion/criterion.h>
 #include "../src/vector.h"
 
-TestSuite(vector);
+TestSuite(VectorBasics);
 
-Test(vector, vector_zeros)
+Test(VectorBasics, vector_zeros)
 {
     vector *v = vector_zeros(1);
-    cr_assert(size(v) == 1);
-    cr_assert(get(v,0) == 0);
+    cr_assert(vector_size(v) == 1);
+    cr_assert(vector_get(v,0) == 0);
     vector_free(v);
 
     vector *u = vector_zeros(5);
-    cr_assert(size(u) == 5);
+    cr_assert(vector_size(u) == 5);
     int i;
-    for (i = 0; i < size(u); i++) {
-        cr_assert(get(u, i) == 0);
+    for (i = 0; i < vector_size(u); i++) {
+        cr_assert(vector_get(u, i) == 0);
     }
     vector_free(u);
 }
 
-Test(vector, setters_getters)
+Test(VectorBasics, vector_setters_vector_getters)
 {
     vector *v = vector_zeros(4);
-    set(v,2,2);
-    cr_assert(get(v,2) == 2);
+    vector_set(v,2,2);
+    cr_assert(vector_get(v,2) == 2);
 
-    cr_assert(get(v,0) == 0);
+    cr_assert(vector_get(v,0) == 0);
 
-    set(v,0,3);
-    cr_assert(get(v,0) == 3);
+    vector_set(v,0,3);
+    cr_assert(vector_get(v,0) == 3);
 
     vector_free(v);
 }
 
-Test(vector, vector_add)
+Test(VectorBasics, vector_add)
 {
     vector *u = vector_zeros(6);
     vector *v = vector_zeros(5);
@@ -42,9 +42,9 @@ Test(vector, vector_add)
     cr_assert(vector_add(u,v) == 0);
     cr_assert(vector_add(v,w) > 0);
 
-    set(w,0,1);
+    vector_set(w,0,1);
     vector_add(v, w);
-    cr_assert(get(v,0) == 1);
+    cr_assert(vector_get(v,0) == 1);
 
     vector_free(u);
     vector_free(v);
@@ -52,17 +52,17 @@ Test(vector, vector_add)
 
 }
 
-Test(vector, scalar)
+Test(VectorBasics, scalar)
 {
     vector *v = vector_zeros(3);
     vector *u = vector_zeros(3);
 
-    set(v,0,5);
-    set(u,1,4);
+    vector_set(v,0,5);
+    vector_set(u,1,4);
 
     cr_assert(scalar(u,v) == 0); 
 
-    set(u,0,3);
+    vector_set(u,0,3);
 
     cr_assert(scalar(u,v) == 15);
 
@@ -70,18 +70,18 @@ Test(vector, scalar)
     vector_free(v);
 }
 
-Test(vector, norm)
+Test(VectorBasics, vector_norm)
 {
     vector *v = vector_zeros(3);
 
-    set(v,0,1);
-    cr_assert(norm(v) == 1);
+    vector_set(v,0,1);
+    cr_assert(vector_norm(v) == 1);
 
-    set(v,1,1);
-    cr_assert(norm(v) == sqrt(2));
+    vector_set(v,1,1);
+    cr_assert(vector_norm(v) == sqrt(2));
 
-    set(v,2,1);
-    cr_assert(norm(v) == sqrt(3));
+    vector_set(v,2,1);
+    cr_assert(vector_norm(v) == sqrt(3));
 
     vector_free(v);
 }

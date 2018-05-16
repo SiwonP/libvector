@@ -15,7 +15,9 @@
 #include <unistd.h>
 #include <math.h>
 #include <complex.h>
+#include <stdarg.h>
 
+#define vector_norm(...) var_vector_norm((vector_norm_args){__VA_ARGS__})
 
 /**
  * @typedef vector
@@ -35,6 +37,14 @@ struct vector
     int n;
     /** Element of the vector.*/
     double *values;
+};
+
+typedef struct vector_norm_args vector_norm_args;
+
+struct vector_norm_args
+{
+    vector *x;
+    char *name;
 };
 
 
@@ -57,7 +67,7 @@ vector *vector_zeros(int size);
  *
  * @related vector
  */
-int size(vector *v);
+int vector_size(vector *v);
 
 /**
  * @brief Return the value of the i-th component of v.
@@ -69,7 +79,7 @@ int size(vector *v);
  *
  * @relates vector
  */
-double get(vector *v, int i);
+double vector_get(vector *v, int i);
 
 /**
  * @brief Change the value of the i-th component of v.
@@ -80,7 +90,7 @@ double get(vector *v, int i);
  *
  * @relates vector
  */
-void set(vector *v, int i, double x);
+void vector_set(vector *v, int i, double x);
 
 /**
  * @brief Sum of two vector of the same dimension,
@@ -135,7 +145,9 @@ double scalar(vector *u, vector *v);
  *
  * @relates vector
  */
-double norm(vector *v);
+double vector_norm_base(vector *v, char *name);
+
+double var_vector_norm(vector_norm_args in);
 
 /**
  * @brief Free the allocated memory of the array of values and 
