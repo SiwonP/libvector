@@ -83,17 +83,32 @@ double scalar(vector *u, vector *v)
 double vector_norm_base(vector *v, char *name)
 {
     double res = 0;
+    int i, p = atoi(name);
+    char inf[] = "infinity", euc[] = "euclidian";
 
-    //TODO: Add infinity norm, and declinaison of p norms
-    res = sqrt(scalar(v, v));
-
+    if (strcmp(inf, name) == 0) {
+        double max = v->values[0];
+        for (i = 0; i < v->n; i++) { 
+            if (v->values[i] > max) {
+                max = v->values[i];
+            }
+        }
+        res = max;
+    } else if(strcmp(euc, name) == 0 || p == 2) {
+        res = sqrt(scalar(v, v));
+    } else if (p > 0) {
+        for (i = 0; i < v->n; i++) {
+            res += pow(fabs(v->values[i]),p);
+        }
+        res = pow(res, 1/p);
+    }
     return res;
 }
 
 double var_vector_norm(vector_norm_args in)
 {
-    char *n_out = in.name ? in.name : "2";
-    return vector_norm_base(in.x, in.name);
+    char *n_out = in.name ? in.name : "euclidian";
+    return vector_norm_base(in.x, n_out);
 }
 
 void vector_free(vector *v)

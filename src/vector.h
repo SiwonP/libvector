@@ -16,6 +16,7 @@
 #include <math.h>
 #include <complex.h>
 #include <stdarg.h>
+#include <string.h>
 
 #define vector_norm(...) var_vector_norm((vector_norm_args){__VA_ARGS__})
 

@@ -76,12 +76,20 @@ Test(VectorBasics, vector_norm)
 
     vector_set(v,0,1);
     cr_assert(vector_norm(v) == 1);
+    cr_assert(vector_norm(v, "1") == 1);
+    cr_assert(vector_norm(v, "2") == 1);
+    cr_assert(vector_norm(v, "infinity") == 1);
 
     vector_set(v,1,1);
     cr_assert(vector_norm(v) == sqrt(2));
+    cr_assert(vector_norm(v, "1") == 2);
+    cr_assert(vector_norm(v, "2") == sqrt(2));
+    cr_assert(vector_norm(v, "infinity") == 1);
 
-    vector_set(v,2,1);
-    cr_assert(vector_norm(v) == sqrt(3));
+    vector_set(v,2,2);
+    cr_assert(vector_norm(v) == sqrt(6));
+    cr_assert(vector_norm(v, "1") == 4);
+    cr_assert(vector_norm(v, "infinity") == 2);
 
     vector_free(v);
 }
