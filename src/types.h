@@ -93,5 +93,6 @@ struct quaternion
     /** Third imaginary part. */
     double d;
 
-}
+};
+
 #endif

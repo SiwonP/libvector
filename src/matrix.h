@@ -15,6 +15,7 @@
 #include "vector.h"
 
 #include "types.h"
+
 /**
  * @brief Create a null matrix.
  *
