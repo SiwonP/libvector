@@ -16,24 +16,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "vector.h"
-
-/**
- * @typedef complex_num
- * @brief complex number structure.
- */
-typedef struct complex_num complex_num;
-
-/**
- * @struct complex_num
- * @brief Representation of complex numbers.
- */
-struct complex_num
-{
-    /** Real part.*/
-    double x;
-    /** Imaginary part.*/
-    double y;
-};
+#include "types.h"
 
 /**
  * @brief Creates and returns the cartesiand form of a complex number
