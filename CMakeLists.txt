@@ -4,6 +4,7 @@ project(libmatheng VERSION 1.0.0)
 
 enable_testing()
 enable_language(C)
+set(CMAKE_C_STANDARD 11)
 
 find_library(NAMES criterion)
 
