@@ -1,4 +1,4 @@
-# libvector ![build status](https://api.travis-ci.org/SiwonP/libmatheng.svg?branch=master)
+# libvector ![build status](https://travis-ci.org/SiwonP/libvector.svg?branch=master)
 
 This library implements mathematical tools useful, at first, for engineering. 
 
