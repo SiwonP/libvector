@@ -1,7 +1,7 @@
 /**
  * @author Simon Petit
  *
- * @file 
+ * @file types.h
  */
 
 #ifndef TYPES_H
@@ -49,6 +49,49 @@ struct vector
     double *values;
 };
 
+/**
+ * @typedef complex_num
+ *
+ * @brief complex number structure.
+ */
+typedef struct complex_num complex_num;
 
+/**
+ * @struct complex_num
+ *
+ * @brief Representation of complex numbers.
+ */
+struct complex_num
+{
+    /** Real part.*/
+    double x;
+    /** Imaginary part.*/
+    double y;
+};
 
+/**
+ * @typedef quaternion
+ *
+ * @brief quaternion structure.
+ */
+typedef struct quaternion quaternion;
+
+/**
+ * @struct quaternion
+ *
+ * @brief Representation of quaternion numbers.
+ */
+struct quaternion
+{
+    /** Real part. */
+    double a;
+
+    /** First imaginary part. */
+    double b;
+    /** Second imaginary part. */
+    double c;
+    /** Third imaginary part. */
+    double d;
+
+}
 #endif
