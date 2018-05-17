@@ -1,6 +1,6 @@
 # libvector ![build status](https://travis-ci.org/SiwonP/libvector.svg?branch=master)
 
-This library implements mathematical tools useful, at first, for engineering. 
+This library implements a vector space elements manipulation.
 
 - [Getting Started](#getting-started)
     * [Prerequisites](#prerequisites)
