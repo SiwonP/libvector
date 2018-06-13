@@ -15,39 +15,36 @@
 #include <unistd.h>
 #include <math.h>
 #include <complex.h>
-#include <stdarg.h>
 #include <string.h>
-
-#define vector_norm(...) var_vector_norm((vector_norm_args){__VA_ARGS__})
-
-/**
- * @typedef vector
- *
- * @brief vector structure.
- */
-typedef struct vector vector;
 
 /**
  * @struct vector
  *
+ * @typedef vector
+ *
  * @brief Real-valued Vector math object.
  */
-struct vector
+typedef struct vector
 {
-    /** Length of the vector.*/
-    int n;
-    /** Element of the vector.*/
-    double *values;
-};
+    int n; /**< Number of rows of the vector. */
+    double *values; /**< Values of the vector. */
 
-typedef struct vector_norm_args vector_norm_args;
+} vector;
 
-struct vector_norm_args
+/**
+ * @struct matrix
+ *
+ * @typedef matrix
+ *
+ * @brief Real-valued Matrix math object.
+ */
+typedef struct matrix
 {
-    vector *x;
-    char *name;
-};
-
+    int n; /**< Number of rows of the matrix. */
+    int m; /**< Number of columns of the matrix. */
+    vector *values; /**< Values of the matrix. */
+} matrix;
+        
 
 /**
  * @brief Create a null vector.
@@ -58,7 +55,7 @@ struct vector_norm_args
  *
  * @relates vector
  */
-vector *vector_zeros(int size);
+vector *v_zeros(int size);
 
 /**
  * @brief Return the dimension (size) of v.
@@ -68,7 +65,16 @@ vector *vector_zeros(int size);
  *
  * @related vector
  */
-int vector_size(vector *v);
+int v_size(vector *v);
+
+/**
+ * @brief Return the dimensions of the matrix.
+ *
+ * @param[in] m A matrix pointer.
+ *
+ * @return Dimension of the matrix as a int array.
+ */
+int *m_size(matrix *m);
 
 /**
  * @brief Return the value of the i-th component of v.
@@ -80,7 +86,20 @@ int vector_size(vector *v);
  *
  * @relates vector
  */
-double vector_get(vector *v, int i);
+double v_get(vector *v, int i);
+
+/**
+ * @brief Return the value of the i-th row and the j-th column of the matrix.
+ *
+ * @param[in] m A matrix pointer.
+ * @param[in] i The row index.
+ * @param[in] j The column index.
+ *
+ * @return Component i,j.
+ *
+ * @relates matrix
+ */
+double m_get(matrix *m, int i, int j);
 
 /**
  * @brief Change the value of the i-th component of v.
@@ -91,7 +110,19 @@ double vector_get(vector *v, int i);
  *
  * @relates vector
  */
-void vector_set(vector *v, int i, double x);
+void v_set(vector *v, int i, double x);
+
+/**
+ * @brief Change the value of the (i,j)-th component of m.
+ *
+ * @param[in] m A matrix pointer.
+ * @param[in] i The row index.
+ * @param[in] j The column index.
+ * @param[in] x The new value.
+ *
+ * @relates matrix
+ */
+void m_set(matrix *m, int i, int j, double x);
 
 /**
  * @brief Sum of two vector of the same dimension,
@@ -105,7 +136,19 @@ void vector_set(vector *v, int i, double x);
  *
  * @relates vector
  */
-int vector_add(vector *u, vector *v);
+int v_add(vector *u, vector *v);
+
+/**
+ * @brief Sum of two matrices.
+ *
+ * @param[in,out] m A matrix pointer. The result will be stored in this arg.
+ * @param[in] n A matrix pointer.
+ *
+ * @return 1 if all went well, 0 either.
+ *
+ * @relates matrix
+ */
+int m_add(matrix *m, matrix *n);
 
 /**
  * @brief Difference of the vectors of the same dimension,
@@ -117,9 +160,9 @@ int vector_add(vector *u, vector *v);
  * @return 1 if both vectors have the same dimension,
  * 0 otherwise (the operation is not defined).
  *
- * @related vector
+ * @relates vector
  */
-int vector_sub(vector *u, vector *v);
+int v_sub(vector *u, vector *v);
 
 /**
  * @brief The scalar product is the one whose
@@ -134,30 +177,31 @@ int vector_sub(vector *u, vector *v);
  *
  * @relates vector
  */
-double scalar(vector *u, vector *v);
+double v_scalar(vector *u, vector *v);
 
 /**
- * @brief 
+ * @brief The multiplication of two vector such that the result is a matrix.
  *
+ * @param[in] u A vector pointer.
  * @param[in] v A vector pointer.
- * @param[in] name The name of the norm, "1", "2" ... "p", "euclidian" or
- * "infinity". 
+ * @param[out] m A matrix pointer : \f$M = uv^T\f$
  *
- * @return The named norm.
+ * @return 1 if the product is done, 0 if not (vectors not of the same size).
  *
  * @relates vector
  */
-double vector_norm_base(vector *v, char *name);
+int v_mul(vector *u, vector *v, matrix *m);
 
 /**
- * @brief Computer the norm from the structure given.
+ * @brief Compute the euclidian norm of the vector.
  *
- * @param[in] in A vector_norm_args object
+ * @param[in] v A vector pointer.
  *
- * @return The norm in.name of in.x. If n.name not specified, the euclidian norm
- * is chosen by default.
+ * @return The euclian norm computed based on the v_scalar function.
+ *
+ * @relates vector
  */
-double var_vector_norm(vector_norm_args in);
+double v_euclidian_norm(vector *v);
 
 /**
  * @brief Free the allocated memory of the array of values and 
@@ -167,6 +211,15 @@ double var_vector_norm(vector_norm_args in);
  *
  * @relates vector
  */
-void vector_free(vector *v);
+void v_free(vector *v);
+
+/**
+ * @brief Free the allocated memories of the matrix
+ *
+ * @param[in] m A matrix pointer
+ *
+ * @relates matrix
+ */
+void m_free(matrix *m);
 
 #endif

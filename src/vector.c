@@ -1,75 +1,129 @@
 /**
  * @author Simon Petit
  *
- * @file 
- * Implementation of functions related to the vector structure.
+ * @file vector.c
+ * Implementation of functions related to vector and matrix.
  */
 #include "vector.h"
 
-
-vector *vector_zeros(int size)
+vector *v_zeros(int size)
 {
-    vector *v = calloc(2, sizeof(int)+sizeof(double*));
+    vector *v;
+    double *val;
+    v = calloc(2, sizeof(int)+sizeof(double*));
+    val = calloc(size, size*sizeof(double));
     v->n = size;
-    double *val = calloc(size, size*sizeof(double));
     v->values = val;
-
     return v;
 }
 
-//TODO: creation of a vector from an array of numbers
+matrix *m_zeros(int size1, int size2)
+{
+    matrix *m;
+    m = calloc(3, 2*sizeof(int) + sizeof(vector**));
+    m->n = size1;
+    m->m = size2;
+    return m;
+}
 
-int vector_size(vector *v)
+
+int v_size(vector *v)
 {
     return v->n;
 }
 
-double vector_get(vector *v, int i)
+int *m_size(matrix *m)
+{
+    static int size[2];
+    size[0] = m->n;
+    size[1] = m->m;
+    return size;
+}
+
+double v_get(vector *v, int i)
 {
     return v->values[i];
 }
 
-void vector_set(vector *v, int i, double x)
+double m_get(matrix *m, int i, int j)
+{
+    return v_get(&(m->values[i]), j);
+}
+
+void v_set(vector *v, int i, double x)
 {
     v->values[i] = x;
 }
 
-int vector_add(vector *u, vector *v)
+void m_set(matrix *m, int i, int j, double x)
 {
-  int res = 0;
-  int i;
-  
-  if(vector_size(v) == vector_size(u)) {
-      for(i = 0; i < vector_size(u); i++) {
-          double x = vector_get(u,i);
-          vector_set(u,i, x+vector_get(v,i));
+    v_set(&(m->values[i]), j , x);
+}
+
+int v_add(vector *u, vector *v)
+{
+  int i, res = 0;
+  if(v_size(v) == v_size(u)) {
+      for(i = 0; i < v_size(u); i++) {
+          double x = v_get(u,i);
+          v_set(u,i, x+v_get(v,i));
       }
       res = 1;
   }
   return res;
 }
 
-int vector_sub(vector *u, vector *v)
+int m_add(matrix *m, matrix *n)
 {
-    int res = 0;
-    int i;
-
-    if(vector_size(u) == vector_size(v)) {
-        for (i = 0; i < vector_size(u); i++) {
-            double x = vector_get(u,i);
-            vector_set(u, i, x + vector_get(v, i));
-        }
-        res = 1;
-    } 
-
+    int i, j, res = 1, *s_m, *s_n;
+    s_m = m_size(m);
+    s_n = m_size(n);
+    if (s_m[0] == s_n[0] && s_m[1] == s_n[1]) {
+       for (i = 0; i < s_m[0]; i++) {
+          for (j = 0; j < s_m[1]; j++) {
+             m_set(m, i, j, m_get(m, i, j) + m_get(n, i, j));
+          }
+       } 
+    } else {
+        res = 0;
+    }
     return res;
 }
 
-double scalar(vector *u, vector *v)
+int v_sub(vector *u, vector *v)
+{
+    int i, res = 0;
+    if(v_size(u) == v_size(v)) {
+        for (i = 0; i < v_size(u); i++) {
+            double x = v_get(u,i);
+            v_set(u, i, x + v_get(v, i));
+        }
+        res = 1;
+    } 
+    return res;
+}
+
+int m_sub(matrix *m, matrix *n)
+{
+    int i, j, res = 1, *s_m, *s_n;
+    s_m = m_size(m);
+    s_n = m_size(n);
+    if (s_m[0] == s_n[0] && s_m[1] == s_n[1]) {
+        for (i = 0; i < s_m[0]; i++) {
+            for (j = 0; j < s_m[1]; j++) {
+                m_set(m, i, j, m_get(m, i, j) - m_get(n, i, j));
+            }
+        } 
+    } else {
+        res = 0;
+    }
+    return res;
+}
+
+double v_scalar(vector *u, vector *v)
 {
     double res = 0;
     int i;
-
     if (u->n == v->n) {
         for (i = 0; i < u->n; i++) {
             res += u->values[i] * v->values[i];
@@ -80,39 +134,57 @@ double scalar(vector *u, vector *v)
     return res;
 }
 
-double vector_norm_base(vector *v, char *name)
+int v_mul(vector *u, vector *v, matrix *m)
 {
-    double res = 0;
-    int i, p = atoi(name);
-    char inf[] = "infinity", euc[] = "euclidian";
+    int i, j, res = 1;
 
-    if (strcmp(inf, name) == 0) {
-        double max = v->values[0];
-        for (i = 0; i < v->n; i++) { 
-            if (v->values[i] > max) {
-                max = v->values[i];
+    if (v_size(u) == v_size(v)) {
+        m = m_zeros(v_size(u), v_size(u));
+        for (i = 0; i < v_size(u); i++) {
+            for (j = 0; j < v_size(v); j++) {
+                m_set(m, i, j, v_get(u, i) * v_get(v, j));
             }
-        }
-        res = max;
-    } else if(strcmp(euc, name) == 0 || p == 2) {
-        res = sqrt(scalar(v, v));
-    } else if (p > 0) {
-        for (i = 0; i < v->n; i++) {
-            res += pow(fabs(v->values[i]),p);
-        }
-        res = pow(res, 1/p);
+        } 
+    } else {
+        res = 0;
     }
     return res;
 }
 
-double var_vector_norm(vector_norm_args in)
+double v_euclidian_norm(vector *v)
 {
-    char *n_out = in.name ? in.name : "euclidian";
-    return vector_norm_base(in.x, n_out);
+    double norm;
+    norm = sqrt(v_scalar(v,v));
+    return norm;
 }
 
-void vector_free(vector *v)
+double m_trace(matrix *m)
+{
+    double trace = 0;
+    int i, j, *size;
+    size = m_size(m);
+    for (i = 0; i < size[0]; i++) {
+        for (j = 0; j < size[1]; ++j) {
+
+        }
+    }
+    return trace;
+}
+double m_frobenius_norm(matrix *m)
+{
+    double norm = 0;
+
+    return norm;
+}
+
+void v_free(vector *v)
 {
     free(v->values);
     free(v);
+}
+
+void m_free(matrix *m)
+{
+    free(m->values);
+    free(m);
 }

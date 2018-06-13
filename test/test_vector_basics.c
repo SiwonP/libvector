@@ -3,95 +3,83 @@
 
 TestSuite(VectorBasics);
 
-Test(VectorBasics, vector_zeros)
+Test(VectorBasics, v_zeros)
 {
-    vector *v = vector_zeros(1);
-    cr_assert(vector_size(v) == 1);
-    cr_assert(vector_get(v,0) == 0);
-    vector_free(v);
+    vector *v = v_zeros(1);
+    cr_assert(v_size(v) == 1);
+    cr_assert(v_get(v,0) == 0);
+    v_free(v);
 
-    vector *u = vector_zeros(5);
-    cr_assert(vector_size(u) == 5);
+    vector *u = v_zeros(5);
+    cr_assert(v_size(u) == 5);
     int i;
-    for (i = 0; i < vector_size(u); i++) {
-        cr_assert(vector_get(u, i) == 0);
+    for (i = 0; i < v_size(u); i++) {
+        cr_assert(v_get(u, i) == 0);
     }
-    vector_free(u);
+    v_free(u);
 }
 
-Test(VectorBasics, vector_setters_vector_getters)
+Test(VectorBasics, v_setters_v_getters)
 {
-    vector *v = vector_zeros(4);
-    vector_set(v,2,2);
-    cr_assert(vector_get(v,2) == 2);
+    vector *v = v_zeros(4);
+    v_set(v,2,2);
+    cr_assert(v_get(v,2) == 2);
 
-    cr_assert(vector_get(v,0) == 0);
+    cr_assert(v_get(v,0) == 0);
 
-    vector_set(v,0,3);
-    cr_assert(vector_get(v,0) == 3);
+    v_set(v,0,3);
+    cr_assert(v_get(v,0) == 3);
 
-    vector_free(v);
+    v_free(v);
 }
 
-Test(VectorBasics, vector_add)
+Test(VectorBasics, v_add)
 {
-    vector *u = vector_zeros(6);
-    vector *v = vector_zeros(5);
-    vector *w = vector_zeros(5);
+    vector *u = v_zeros(6);
+    vector *v = v_zeros(5);
+    vector *w = v_zeros(5);
 
-    cr_assert(vector_add(u,v) == 0);
-    cr_assert(vector_add(v,w) > 0);
+    cr_assert(v_add(u,v) == 0);
+    cr_assert(v_add(v,w) > 0);
 
-    vector_set(w,0,1);
-    vector_add(v, w);
-    cr_assert(vector_get(v,0) == 1);
+    v_set(w,0,1);
+    v_add(v, w);
+    cr_assert(v_get(v,0) == 1);
 
-    vector_free(u);
-    vector_free(v);
-    vector_free(w);
+    v_free(u);
+    v_free(v);
+    v_free(w);
 
 }
 
 Test(VectorBasics, scalar)
 {
-    vector *v = vector_zeros(3);
-    vector *u = vector_zeros(3);
+    vector *v = v_zeros(3);
+    vector *u = v_zeros(3);
 
-    vector_set(v,0,5);
-    vector_set(u,1,4);
+    v_set(v,0,5);
+    v_set(u,1,4);
 
-    cr_assert(scalar(u,v) == 0); 
+    cr_assert(v_scalar(u,v) == 0); 
 
-    vector_set(u,0,3);
+    v_set(u,0,3);
 
-    cr_assert(scalar(u,v) == 15);
+    cr_assert(v_scalar(u,v) == 15);
 
-    vector_free(u);
-    vector_free(v);
+    v_free(u);
+    v_free(v);
 }
 
-Test(VectorBasics, vector_norm)
+Test(VectorBasics, v_norm)
 {
-    vector *v = vector_zeros(3);
+    vector *v = v_zeros(3);
 
-    vector_set(v,0,1);
-    cr_assert(vector_norm(v) == 1);
-    cr_assert(vector_norm(v, "1") == 1);
-    cr_assert(vector_norm(v, "2") == 1);
-    cr_assert(vector_norm(v, "infinity") == 1);
-
-    vector_set(v,1,1);
-    cr_assert(vector_norm(v) == sqrt(2));
-    cr_assert(vector_norm(v, "1") == 2);
-    cr_assert(vector_norm(v, "2") == sqrt(2));
-    cr_assert(vector_norm(v, "infinity") == 1);
-
-    vector_set(v,2,2);
-    cr_assert(vector_norm(v) == sqrt(6));
-    cr_assert(vector_norm(v, "1") == 4);
-    cr_assert(vector_norm(v, "infinity") == 2);
-
-    vector_free(v);
+    v_free(v);
 }
 
-
+Test(VectorBasics, size)
+{
+    vector *v = v_zeros(3);
+    cr_assert(v_size(v) == 3);
+    v_free(v);
+}
