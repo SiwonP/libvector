@@ -151,6 +151,29 @@ int v_mul(vector *u, vector *v, matrix *m)
     return res;
 }
 
+int m_mul(matrix *m, matrix *n)
+{
+    double c;
+    int i, j, k, res = 1, *s_m, *s_n;
+    s_m = m_size(m);
+    s_n = m_size(n);
+
+    if (s_m[1] == s_n[0]) {
+        for (i = 0; i < s_m[0]; i++) {
+            for (j = 0; j < s_n[1]; i++) {
+                c = 0;
+                for (k = 0; k < s_m[1]; k++) {
+                    c += m_get(m, i, k) * m_get(n, k, j);
+                }
+                m_set(m, i, j, c);
+            }
+        }
+    } else {
+        res = 0;
+    }
+    return res;
+}
+
 double v_euclidian_norm(vector *v)
 {
     double norm;
@@ -164,9 +187,7 @@ double m_trace(matrix *m)
     int i, j, *size;
     size = m_size(m);
     for (i = 0; i < size[0]; i++) {
-        for (j = 0; j < size[1]; ++j) {
-
-        }
+        trace += m_get(m,i,i);
     }
     return trace;
 }

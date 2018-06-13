@@ -193,6 +193,19 @@ double v_scalar(vector *u, vector *v);
 int v_mul(vector *u, vector *v, matrix *m);
 
 /**
+ * @brief The multiplication of two matrices with appropriate dimensions.
+ *
+ * @para[in,out] m A matrix pointer. The result of the product will be stored
+ * here.
+ * @param[in] n A matrix pointer.
+ *
+ * @returns 1 if the product succeded, 0 otherwise.
+ *
+ * @relates matrix
+ */
+int m_mul(matrix *m, matrix *n);
+
+/**
  * @brief Compute the euclidian norm of the vector.
  *
  * @param[in] v A vector pointer.
