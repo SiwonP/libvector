@@ -192,6 +192,9 @@ double v_scalar(vector *u, vector *v);
  */
 int v_mul(vector *u, vector *v, matrix *m);
 
+//TODO doc
+int v_scalar_mul(vector *v, double x);
+
 /**
  * @brief The multiplication of two matrices with appropriate dimensions.
  *
@@ -204,6 +207,9 @@ int v_mul(vector *u, vector *v, matrix *m);
  * @relates matrix
  */
 int m_mul(matrix *m, matrix *n);
+
+//TODO doc
+int m_scalar_mul(matrix *m, double x);
 
 /**
  * @brief Compute the euclidian norm of the vector.

@@ -151,6 +151,15 @@ int v_mul(vector *u, vector *v, matrix *m)
     return res;
 }
 
+int v_scalar_mul(vector *v, double x)
+{
+    int i, res = 1;
+    for (i = 0; i < v_size(v); i++) {
+        v_set(v, i, v_get(v, i) * x);
+    }
+    return res;
+}
+
 int m_mul(matrix *m, matrix *n)
 {
     double c;
@@ -174,6 +183,16 @@ int m_mul(matrix *m, matrix *n)
     return res;
 }
 
+int m_scalar_mul(matrix *m, double x)
+{
+    int i, j, res = 1, *size;
+    for (i = 0; i < size[0]; i++) {
+        for (j = 0; j < size[1]; j++) {
+            m_set(m, i, j, m_get(m, i, j) * x);
+        }
+    }
+    return res;
+}
 double v_euclidian_norm(vector *v)
 {
     double norm;
