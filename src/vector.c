@@ -191,10 +191,27 @@ double m_trace(matrix *m)
     }
     return trace;
 }
+
+int m_transpose(matrix *m, matrix *n)
+{
+    int i, j, res = 1;
+    int *size = m_size(m);
+    n = m_zeros(size[0], size[1]);
+    for (i = 0; i < size[0]; i++) {
+        for (j = 0; j < size[1]; j++) {
+            m_set(n, j, i, m_get(m, i, j));
+        }
+    }
+    return res;
+}
+
 double m_frobenius_norm(matrix *m)
 {
     double norm = 0;
-
+    matrix *n;
+    m_transpose(m,n);
+    m_mul(m, n);
+    norm = m_trace(m);
     return norm;
 }
 

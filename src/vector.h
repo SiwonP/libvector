@@ -217,6 +217,38 @@ int m_mul(matrix *m, matrix *n);
 double v_euclidian_norm(vector *v);
 
 /**
+ * @brief Compute the trace of a matrix.
+ *
+ * @param[in] m A matrix pointer.
+ *
+ * @return The trace.
+ *
+ * @relates matrix
+ */
+double m_trace(matrix* m);
+
+/**
+ * @brief Compute the transposed matrix.
+ *
+ * @param[in] m The source matrix
+ * @param[in] n The newly transposed matrix.
+ *
+ * @return 1 if all went well, 0 otherwise.
+ */
+int m_transpose(matrix* m, matrix *n);
+
+/**
+ * @brief Compute the frobenius norm of a matrix.
+ *
+ * @param[in] m A matrix pointer.
+ *
+ * @return The norm.
+ *
+ * @relates matrix
+ */
+double m_frobenius_norm(matrix* m);
+
+/**
  * @brief Free the allocated memory of the array of values and 
  * of the struct of the vector itself.
  *
