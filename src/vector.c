@@ -10,7 +10,6 @@ vector *v_zeros(int size)
 {
     vector *v;
     double *val;
-    //v = calloc(2, sizeof(int)+sizeof(double*));
     v = calloc(1, sizeof(vector));
     val = calloc(size, size*sizeof(double));
     v->n = size;
@@ -83,13 +82,12 @@ int *m_size(matrix *m)
 
 double v_get(vector *v, int i)
 {
-    //return v->values[i];
-    return 0;
+    return v->values[i];
 }
 
 double m_get(matrix *m, int i, int j)
 {
-    return v_get(m->values[i], i);
+    return v_get(m->values[i], j);
 }
 
 void v_set(vector *v, int i, double x)
@@ -99,7 +97,7 @@ void v_set(vector *v, int i, double x)
 
 void m_set(matrix *m, int i, int j, double x)
 {
-    v_set(m->values[i], i, x);
+    v_set(m->values[i], j, x);
 }
 
 int v_add(vector *u, vector *v)
