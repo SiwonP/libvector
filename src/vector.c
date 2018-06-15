@@ -10,22 +10,63 @@ vector *v_zeros(int size)
 {
     vector *v;
     double *val;
-    v = calloc(2, sizeof(int)+sizeof(double*));
+    //v = calloc(2, sizeof(int)+sizeof(double*));
+    v = calloc(1, sizeof(vector));
     val = calloc(size, size*sizeof(double));
     v->n = size;
     v->values = val;
     return v;
 }
 
+void v_print(vector *v)
+{
+    int i;
+    printf("[ ");
+    for (i = 0; i < v_size(v); i++) {
+        printf("%lf ", v->values[i]);
+    }
+    printf("]\n");
+}
+
 matrix *m_zeros(int size1, int size2)
 {
+    int i;
     matrix *m;
-    m = calloc(3, 2*sizeof(int) + sizeof(vector**));
+    vector **val;
+    m = calloc(1, sizeof(matrix));
     m->n = size1;
     m->m = size2;
+    val = calloc(size1*size2, size1*size2*sizeof(vector*));
+    for (i = 0; i < size1; i++) {
+        val[i] = v_zeros(size2);
+    }
+    m->values = val;
     return m;
 }
 
+matrix *m_identity(int size)
+{
+    matrix *m;
+    int i;
+    m = calloc(1, sizeof(matrix));
+    m->n = size;
+    m->m = size;
+    for (i = 0; i < size; i++) {
+        m_set(m, i, i, 1);
+    }
+    return m;
+}
+
+void m_print(matrix *m)
+{
+    int i, j, *size;
+    for (i = 0; i < size[0]; i++) {
+        for (j = 0 ; j < size[1]; j++) {
+            printf("%lf\t", m_get(m, i, j));
+        }
+        printf("\n");
+    }
+}
 
 int v_size(vector *v)
 {
@@ -42,12 +83,13 @@ int *m_size(matrix *m)
 
 double v_get(vector *v, int i)
 {
-    return v->values[i];
+    //return v->values[i];
+    return 0;
 }
 
 double m_get(matrix *m, int i, int j)
 {
-    return v_get(&(m->values[i]), j);
+    return v_get(m->values[i], i);
 }
 
 void v_set(vector *v, int i, double x)
@@ -57,7 +99,7 @@ void v_set(vector *v, int i, double x)
 
 void m_set(matrix *m, int i, int j, double x)
 {
-    v_set(&(m->values[i]), j , x);
+    v_set(m->values[i], i, x);
 }
 
 int v_add(vector *u, vector *v)

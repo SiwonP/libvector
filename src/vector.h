@@ -42,7 +42,7 @@ typedef struct matrix
 {
     int n; /**< Number of rows of the matrix. */
     int m; /**< Number of columns of the matrix. */
-    vector *values; /**< Values of the matrix. */
+    vector **values; /**< Values of the matrix. */
 } matrix;
         
 
@@ -56,6 +56,15 @@ typedef struct matrix
  * @relates vector
  */
 vector *v_zeros(int size);
+
+void v_print(vector *v);
+
+/**
+ *TODO doc
+ */
+matrix *m_zeros(int size1, int size2);
+
+void m_print(matrix *m);
 
 /**
  * @brief Return the dimension (size) of v.
