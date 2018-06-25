@@ -60,10 +60,24 @@ vector *v_zeros(int size);
 void v_print(vector *v);
 
 /**
- *TODO doc
+ * @brief Create a null matrix.
+ *
+ * @param[in] size1 Number of rows.
+ * @param[in] size2 Number of columns.
+ *
+ * @return A size1 x size2 matrix pointer.
+ *
+ * @relates matrix
  */
 matrix *m_zeros(int size1, int size2);
 
+/**
+ * @brief Display a matrix
+ *
+ * @param[in] m A matrix pointer.
+ *
+ * @relates matrix
+ */
 void m_print(matrix *m);
 
 /**
