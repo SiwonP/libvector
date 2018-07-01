@@ -11,8 +11,23 @@ vector *v_zeros(int size)
     vector *v;
     double *val;
     v = calloc(1, sizeof(vector));
-    val = calloc(size, size*sizeof(double));
+    val = calloc(size, sizeof(double));
     v->n = size;
+    v->values = val;
+    return v;
+}
+
+vector *v_ones(int size)
+{
+    vector *v;
+    int i;
+    double *val;
+    v = calloc(1, sizeof(vector));
+    val = calloc(size, sizeof(double));
+    v->n = size;
+    for (i = 0; i < size; ++i) {
+        val[i] = 1;
+    }
     v->values = val;
     return v;
 }
@@ -35,9 +50,25 @@ matrix *m_zeros(int size1, int size2)
     m = calloc(1, sizeof(matrix));
     m->n = size1;
     m->m = size2;
-    val = calloc(size1*size2, size1*size2*sizeof(vector*));
+    val = calloc(size1*size2, sizeof(vector*));
     for (i = 0; i < size1; i++) {
         val[i] = v_zeros(size2);
+    }
+    m->values = val;
+    return m;
+}
+
+matrix *m_ones(int size1, int size2)
+{
+    int i;
+    matrix *m;
+    vector **val;
+    m = calloc(1, sizeof(matrix));
+    m->n = size1;
+    m->m = size2;
+    val = calloc(size1*size2, sizeof(vector*));
+    for (i = 0; i < size1; i++) {
+        val[i] = v_ones(size2);
     }
     m->values = val;
     return m;

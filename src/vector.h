@@ -57,6 +57,17 @@ typedef struct matrix
  */
 vector *v_zeros(int size);
 
+/**
+ * @brief Create a one valued vector
+ *
+ * @param[in] size The dimension of the vector.
+ *
+ * @return Vector pointer of length size.
+ *
+ * @relates vector
+ */
+vector *v_ones(int size);
+
 void v_print(vector *v);
 
 /**
