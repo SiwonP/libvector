@@ -19,7 +19,7 @@ Test(VectorBasics, v_zeros)
     v_free(u);
 }
 
-Test(VectorBasics, v_setters_v_getters)
+Test(VectorBasics, v_set_v_get)
 {
     vector *v = v_zeros(4);
     v_set(v,2,2);
@@ -52,7 +52,7 @@ Test(VectorBasics, v_add)
 
 }
 
-Test(VectorBasics, scalar)
+Test(VectorBasics, v_scalar)
 {
     vector *v = v_zeros(3);
     vector *u = v_zeros(3);
@@ -77,7 +77,7 @@ Test(VectorBasics, v_norm)
     v_free(v);
 }
 
-Test(VectorBasics, size)
+Test(VectorBasics, v_size)
 {
     vector *v = v_zeros(3);
     cr_assert(v_size(v) == 3);
