@@ -205,9 +205,10 @@ double v_scalar(vector *u, vector *v)
     return res;
 }
 
-int v_mul(vector *u, vector *v, matrix *m)
+matrix *v_mul(vector *u, vector *v)
 {
-    int i, j, res = 1;
+    int i, j;
+    matrix *m;
 
     if (v_size(u) == v_size(v)) {
         m = m_zeros(v_size(u), v_size(u));
@@ -217,9 +218,10 @@ int v_mul(vector *u, vector *v, matrix *m)
             }
         } 
     } else {
-        res = 0;
+        //TODO handle error in case vector are not of 
+        //the same length
     }
-    return res;
+    return m;
 }
 
 int v_scalar_mul(vector *v, double x)
@@ -282,9 +284,10 @@ double m_trace(matrix *m)
     return trace;
 }
 
-int m_transpose(matrix *m, matrix *n)
+matrix *m_transpose(matrix *m)
 {
-    int i, j, res = 1;
+    int i, j;
+    matrix *n;
     int *size = m_size(m);
     n = m_zeros(size[0], size[1]);
     for (i = 0; i < size[0]; i++) {
@@ -292,14 +295,14 @@ int m_transpose(matrix *m, matrix *n)
             m_set(n, j, i, m_get(m, i, j));
         }
     }
-    return res;
+    return n;
 }
 
 double m_frobenius_norm(matrix *m)
 {
     double norm = 0;
     matrix *n;
-    m_transpose(m,n);
+    n = m_transpose(m);
     m_mul(m, n);
     norm = m_trace(m);
     return norm;

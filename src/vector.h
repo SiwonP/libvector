@@ -236,9 +236,16 @@ double v_scalar(vector *u, vector *v);
  *
  * @relates vector
  */
-int v_mul(vector *u, vector *v, matrix *m);
+matrix *v_mul(vector *u, vector *v);
 
-//TODO doc
+/**
+ * @brief The multiplication of a vector by a scalar.
+ *
+ * @param[in] v A vector pointer.
+ * @param[in] x A scalar.
+ *
+ * @relates vector
+ */
 int v_scalar_mul(vector *v, double x);
 
 /**
@@ -254,7 +261,14 @@ int v_scalar_mul(vector *v, double x);
  */
 int m_mul(matrix *m, matrix *n);
 
-//TODO doc
+/**
+ * @brief The multiplication of a matrix and a scalar.
+ *
+ * @param[in,out] m A matrix pointer.
+ * @param[in] x A scalar.
+ *
+ * @relates matrix
+ */
 int m_scalar_mul(matrix *m, double x);
 
 /**
@@ -287,7 +301,7 @@ double m_trace(matrix* m);
  *
  * @return 1 if all went well, 0 otherwise.
  */
-int m_transpose(matrix* m, matrix *n);
+matrix *m_transpose(matrix* m);
 
 /**
  * @brief Compute the frobenius norm of a matrix.
