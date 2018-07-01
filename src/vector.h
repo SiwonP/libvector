@@ -230,9 +230,8 @@ double v_scalar(vector *u, vector *v);
  *
  * @param[in] u A vector pointer.
  * @param[in] v A vector pointer.
- * @param[out] m A matrix pointer : \f$M = uv^T\f$
  *
- * @return 1 if the product is done, 0 if not (vectors not of the same size).
+ * @return The product of the 2 vector such that it forms a matrix.
  *
  * @relates vector
  */
@@ -297,9 +296,10 @@ double m_trace(matrix* m);
  * @brief Compute the transposed matrix.
  *
  * @param[in] m The source matrix
- * @param[in] n The newly transposed matrix.
  *
- * @return 1 if all went well, 0 otherwise.
+ * @return The transposed matrix.
+ *
+ * @relates matrix
  */
 matrix *m_transpose(matrix* m);
 
