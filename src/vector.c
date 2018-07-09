@@ -266,6 +266,36 @@ int m_scalar_mul(matrix *m, double x)
     }
     return res;
 }
+
+int v_equal(vector *u, vector *v)
+{
+    int i, equ = 0;
+    if (v_size(u) == v_size(v)) {
+        equ = 1;
+        for (i = 0; i < v_size(u); ++i) {
+            equ = equ && (v_get(u,i) == v_get(v,i));
+        }
+    }
+    return equ;
+}
+
+int m_equal(matrix *m, matrix *n)
+{
+    int i, j, equ = 0;
+    int *m_s, *n_s;
+    m_s = m_size(m);
+    n_s = m_size(n);
+    
+    if((m_s[0] == n_s[0]) && (m_s[1] == n_s[1])) {
+        equ = 1;
+        for (i = 0; i < m_s[0]; ++i) {
+            for (j = 0; j < m_s[1]; ++j) {
+                equ = equ && (m_get(m, i, j) == m_get(n, i, j));
+            }
+        }
+    }
+    return equ;
+}
 double v_euclidian_norm(vector *v)
 {
     double norm;
