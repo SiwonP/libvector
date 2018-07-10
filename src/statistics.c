@@ -29,7 +29,7 @@ double v_covariance(vector *u, vector *v)
         covar += (v_get(u, i) - mean1)*(v_get(v, i) - mean2);
     }
 
-    covar = covar / v_size(u);
+    covar = covar / (v_size(u) - 1);
 
     return covar;
 }
