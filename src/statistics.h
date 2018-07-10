@@ -1,5 +1,5 @@
-#ifndef PROBABILITY_H
-#define PROBABILITY_H
+#ifndef STATISTICS_H
+#define STATISTICS_H
 
 #include "vector.h"
 

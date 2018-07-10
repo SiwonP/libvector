@@ -1,4 +1,4 @@
-#include "probability.h"
+#include "statistics.h"
 
 double v_mean(vector *v)
 {
