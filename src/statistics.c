@@ -34,3 +34,35 @@ double v_covariance(vector *u, vector *v)
     return covar;
 }
 
+double v_auto_correlation(vector *u, int k)
+{
+    double mean, var = 0, autocorr = 0;
+    int i;
+
+    mean = v_mean(u);
+
+    for (i = 0; i < v_size(u); ++u) {
+        var += (v_get(u, i) - mean) * (v_get(u, i) - mean);
+        autocorr += (v_get(u, i) - mean) * (v_get(u, (i + k) % v_size(u)) -mean);
+    }
+ 
+    autocorr = autocorr / var;
+
+    return autocorr;
+}
+
+double v_correlation(vector *u, vector *v)
+{
+    double var1, var2, covar, corr = 0;
+    int i;
+
+    var1 = v_variance(u);
+    var2 = v_variance(v);
+
+    covar = v_covariance(u, v);
+
+    corr = covar / (sqrt(var1) * sqrt(var2));
+
+    return corr;
+}
+
